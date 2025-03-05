@@ -38,8 +38,8 @@ public class Ticket implements Comparable<Ticket> {
         return timeTo;
     }
 
-    public int flightTime(){
-        return (timeTo-timeFrom);
+    public int flightTime() {
+        return (timeTo - timeFrom);
     }
 
     // Вспомогательные методы для корректной работы equals
