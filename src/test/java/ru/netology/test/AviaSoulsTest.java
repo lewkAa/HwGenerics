@@ -3,7 +3,6 @@ package ru.netology.test;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
 import ru.netology.domain.*;
 
 import java.util.Comparator;
@@ -41,6 +40,34 @@ public class AviaSoulsTest {
         Comparator<Ticket> flightTimeComparator = new TicketTimeComparator();
 
         Ticket[] actual = service.searchAndSort("MSC", "SPB", flightTimeComparator);
+        Assertions.assertArrayEquals(expected, actual);
+
+    }
+
+    @Test
+    void shouldSearchAndSort2() {
+        AviaSouls service = new AviaSouls();
+        service.add(ticket1, ticket2, ticket3, ticket4, ticket5, ticket6, ticket7);
+
+        Ticket[] expected = {ticket7};
+
+        Comparator<Ticket> flightTimeComparator = new TicketTimeComparator();
+
+        Ticket[] actual = service.searchAndSort("NVSB", "VDVS", flightTimeComparator);
+        Assertions.assertArrayEquals(expected, actual);
+
+    }
+
+    @Test
+    void shouldSearchAndSort3() {
+        AviaSouls service = new AviaSouls();
+        service.add(ticket1, ticket2, ticket3, ticket4, ticket5, ticket6, ticket7);
+
+        Ticket[] expected = {};
+
+        Comparator<Ticket> flightTimeComparator = new TicketTimeComparator();
+
+        Ticket[] actual = service.searchAndSort("NVSB", "MSC", flightTimeComparator);
         Assertions.assertArrayEquals(expected, actual);
 
     }
