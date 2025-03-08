@@ -31,6 +31,29 @@ public class AviaSoulsTest {
     }
 
     @Test
+    void shouldSearch2() {
+        AviaSouls service = new AviaSouls();
+        service.add(ticket1, ticket2, ticket3, ticket4, ticket5, ticket6, ticket7);
+
+        Ticket[] expected = {ticket7};
+        Ticket[] actual = service.search("NVSB", "VDVS");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldSearch3() {
+        AviaSouls service = new AviaSouls();
+        service.add(ticket1, ticket2, ticket3, ticket4, ticket5, ticket6, ticket7);
+
+        Ticket[] expected = {};
+        Ticket[] actual = service.search("MSC", "VDVS");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+
+    @Test
     void shouldSearchAndSort() {
         AviaSouls service = new AviaSouls();
         service.add(ticket1, ticket2, ticket3, ticket4, ticket5, ticket6, ticket7);
